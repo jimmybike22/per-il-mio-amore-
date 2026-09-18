@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Per Cici ❤️</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #120018, #3b003d, #17001f);
+    color: white;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+.intro {
+    animation: fadeIn 2s ease;
+}
+h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+.subtitle {
+    font-size: 20px;
+    opacity: 0.85;
+    margin-bottom: 35px;
+}
+button {
+    background: linear-gradient(135deg, #ff4f91, #ff176f);
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    border-radius: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255, 50, 130, 0.5);
+    transition: 0.3s;
+}
+button:hover {
+    transform: scale(1.08);
+}
+.letter {
+    display: none;
+    max-width: 700px;
+    animation: letterAppear 2s ease;
+}
+.letter-box {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
+    padding: 35px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(255, 60, 150, 0.2);
+}
+.letter h2 {
+    color: #ff82b2;
+    font-size: 34px;
+}
+.letter p {
+    font-size: 20px;
+    line-height: 1.8;
+}
+.final {
+    margin-top: 30px;
+    font-size: 26px;
+    color: #ff82b2;
+}
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 5s linear forwards;
+    pointer-events: none;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="intro" id="intro">
+    <div style="font-size:60px;">💌</div>
+    <h1>Ho una cosa da dirti...</h1>
+    <div class="subtitle">
+        Ma questa volta non voglio dirtela semplicemente a parole.
+    </div>
+    <button onclick="openLetter()">
+        Apri la sorpresa ❤️
+    </button>
+</div>
+<div class="letter" id="letter">
+    <div class="letter-box">
+        <div style="font-size:55px;">❤️</div>
+        <h2>Per te, Cici</h2>
+        <p>
+            Ciao amore.
+            <br><br>
+            Non so nemmeno bene da dove iniziare,
+            perché ci sono cose che faccio fatica a spiegare
+            con le parole.
+            <br><br>
+            Però una cosa la so:
+            sei diventata una persona davvero speciale per me.
+            <br><br>
+            Ogni momento con te, anche quelli più semplici,
+            riesce ad avere qualcosa di diverso.
+            E forse è proprio questo che mi piace di noi.
+            <br><br>
+            Volevo solo ricordarti quanto sei importante
+            per me e quanto sono felice di averti nella mia vita.
+            <br><br>
+            Questa piccola sorpresa è solo un modo diverso
+            per dirti una cosa molto semplice...
+        </p>
+        <div class="final">
+            Ti voglio bene, Cici. ❤️
+        </div>
+    </div>
+</div>
+</div>
+<script>
+function openLetter() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("letter").style.display = "block";
+    for (let i = 0; i < 35; i++) {
+        setTimeout(createHeart, i * 100);
+    }
+}
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+</script>
+</body>
+</html>
